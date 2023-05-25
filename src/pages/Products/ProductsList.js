@@ -5,11 +5,12 @@ import { useLocation } from "react-router-dom";
 import { useTitle } from "../../hooks/useTitle";
 
 export const ProductsList = () => {
+  useTitle("My title");
   const [show, setShow] = useState(false)
   const [products, setProducts] = useState([]);
   const search = useLocation().search;
   const searchTerm = new URLSearchParams(search).get("q");
-  useTitle("My title")
+
   useEffect(() => {
     async function fetchProducts() {
       const response = await fetch(`http://localhost:8000/products?name_like=${searchTerm ? searchTerm : ""}`);
