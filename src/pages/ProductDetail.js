@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { Rating } from "../components/Elements/Rating";
+import { useTitle } from "../hooks/useTitle";
 
 export const ProductDetail = () => {
-  const [products, setProducts] = useState({});
+    const [products, setProducts] = useState({});
   const { id } = useParams();
   useEffect(() => {
     async function fetchProducts() {
@@ -13,6 +14,7 @@ export const ProductDetail = () => {
     }
     fetchProducts();
   }, [id])
+  useTitle(products.name)
   return (
     <main>
       <section>
