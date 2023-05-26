@@ -10,7 +10,7 @@ export const ProductsList = () => {
   const [products, setProducts] = useState([]);
   const search = useLocation().search;
   const searchTerm = new URLSearchParams(search).get("q");
-
+  
   useEffect(() => {
     async function fetchProducts() {
       const response = await fetch(`http://localhost:8000/products?name_like=${searchTerm ? searchTerm : ""}`);
