@@ -4,14 +4,13 @@ import { Rating } from "../components/Elements/Rating";
 import { useTitle } from "../hooks/useTitle";
 
 export const ProductDetail = () => {
-    const [products, setProducts] = useState({});
+  const [products, setProducts] = useState({});
   const { id } = useParams();
   useEffect(() => {
     async function fetchProducts() {
       const response = await fetch(`http://localhost:8000/products/${id}`)
       const data = await response.json();
-      setProducts(data);
-    }
+      setProducts(data);}
     fetchProducts();
   }, [id])
   useTitle(products.name)
