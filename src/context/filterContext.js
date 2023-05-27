@@ -10,16 +10,24 @@ const filterInitialState = {
 const filterContext = createContext(filterInitialState);
 export const FilterProvider = ({ children }) => {
     const [state, dispatch] = useReducer(filterReducer, filterInitialState);
+    const initialProductList = (products) => {
+        dispatch({
+            type: "PRODUCT_LIST",
+            payload: {
+                products: products
+            }
+        })
+    }
     const value = {
-        productList
-            : [1, 2, 3]
+        products: state.productList,
+        initialProductList
     }
     return (
-        <>
+      
             <filterContext.Provider value={value}>
                 {children}
             </filterContext.Provider>
-        </>
+        
     )
 }
 export const useFilter = () => {
